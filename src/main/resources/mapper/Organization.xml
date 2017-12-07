@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IOrganization接口方法提供sql语句配置 -->
+<mapper namespace="com.tsb.dao.IOrganizationDao">
+    <sql id="allColumn">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null"> id,</if>
+            <if test="orgCode != null"> C_CODE,</if>
+            <if test="orgName != null"> C_ORGANIZATIONNAME,</if>
+        </trim>
+    </sql>
+
+    <sql id="allColumnVar">
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id},</if>
+            <if test="orgCode != null">#{orgCode},</if>
+            <if test="orgName != null"> #{orgName},</if>
+        </trim>
+    </sql>
+
+    <insert id="insertOrg" parameterType="com.tsb.model.Organization">
+        insert into t_s_org_code
+        <include refid="allColumn"/>
+        <include refid="allColumnVar"/>
+    </insert>
+    <select id="selectOrg" resultType="com.tsb.model.Organization" parameterType="com.tsb.model.Organization">
+        SELECT id,C_ORGANIZATIONNAME orgName,C_CODE orgCode FROM t_s_org_code WHERE C_ORGANIZATIONNAME = #{orgName} AND is_use=1
+    </select>
+</mapper>

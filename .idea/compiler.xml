@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="BigQing" />
+        <module name="TSB_ISCHOOL_CHANGZHOU_INTER_SERVER" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="TSB_ISCHOOL_CHANGZHOU_INTER_SERVER" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

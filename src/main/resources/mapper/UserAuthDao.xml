@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserAuthDao接口方法提供sql语句配置 -->
+<mapper namespace="com.tsb.dao.IUserAuthDao">
+    <sql id="allColumn">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null"> id,</if>
+            <if test="c_userid != null"> C_USERID,</if>
+            <if test="c_state != null"> C_STATE,</if>
+        </trim>
+    </sql>
+
+    <sql id="allColumnVar">
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id},</if>
+            <if test="c_userid != null">#{c_userid},</if>
+            <if test="c_state != null"> #{c_state},</if>
+        </trim>
+    </sql>
+
+    <insert id="insertUserAuth" parameterType="com.tsb.model.UserAuth">
+        insert into t_s_user_auth
+        <include refid="allColumn"/>
+        <include refid="allColumnVar"/>
+    </insert>
+    <select id="selectUserAuth" resultType="UserAuth" parameterType="String">
+        SELECT id FROM t_s_user_auth WHERE C_USERID = #{c_userid} AND is_use=1
+    </select>
+
+</mapper>
